@@ -1,16 +1,10 @@
-import logging
-from pathlib import Path
+from loguru import logger
+import sys
 
-LOG_DIR = Path("logs")
-LOG_DIR.mkdir(exist_ok=True)
+logger.remove()
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s",
-    handlers=[
-        logging.FileHandler(LOG_DIR / "pipeline.log"),
-        logging.StreamHandler()
-    ]
+logger.add(
+    sys.stdout,
+    level="INFO",
+    format="<green>{time}</green> | <level>{level}</level> | {message}"
 )
-
-logger = logging.getLogger("SparkPipeline")

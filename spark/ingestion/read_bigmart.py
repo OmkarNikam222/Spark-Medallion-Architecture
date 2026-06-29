@@ -3,7 +3,6 @@ from spark.common.helpers import load_config
 
 config = load_config()
 
-
 RAW_PATH = config["paths"]["raw"]
 
 

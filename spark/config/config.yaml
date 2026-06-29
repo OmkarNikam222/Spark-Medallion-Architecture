@@ -1,11 +1,13 @@
-app_name: Spark Medallion Architecture
+project:
+  name: Spark Medallion Architecture
 
-raw_path: storage/raw
+paths:
+  raw: "/Volumes/spark_demo/retail/raw/bigmart_sales.csv"
 
-bronze_path: storage/bronze
+  bronze: "/Volumes/spark_demo/retail/bronze/bigmart"
 
-silver_path: storage/silver
+  silver: "/Volumes/spark_demo/retail/silver/bigmart"
 
-gold_path: storage/gold
+  gold: "/Volumes/spark_demo/retail/gold/bigmart"
 
-rejected_path: storage/rejected
+write_mode: overwrite

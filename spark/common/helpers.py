@@ -1,13 +1,17 @@
 from pathlib import Path
+import yaml
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-RAW_PATH = PROJECT_ROOT / "storage" / "raw"
+def load_config():
+    """
+    Load the project configuration file.
+    """
 
-BRONZE_PATH = PROJECT_ROOT / "storage" / "bronze"
+    config_path = (
+        Path(__file__).resolve().parent.parent
+        / "config"
+        / "config.yaml"
+    )
 
-SILVER_PATH = PROJECT_ROOT / "storage" / "silver"
-
-GOLD_PATH = PROJECT_ROOT / "storage" / "gold"
-
-REJECTED_PATH = PROJECT_ROOT / "storage" / "rejected"
+    with open(config_path, "r") as file:
+        return yaml.safe_load(file)
