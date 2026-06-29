@@ -1,0 +1,11 @@
+app_name: Spark Medallion Architecture
+
+raw_path: storage/raw
+
+bronze_path: storage/bronze
+
+silver_path: storage/silver
+
+gold_path: storage/gold
+
+rejected_path: storage/rejected
