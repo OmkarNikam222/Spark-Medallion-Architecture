@@ -1,6 +1,12 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "spark-medallion-architecture"
 version = "0.1.0"
+description = "Production-style Spark Medallion Architecture"
+requires-python = ">=3.10"
 
 dependencies = [
     "pyspark>=4.0",
@@ -12,9 +18,13 @@ dependencies = [
     "loguru",
 ]
 
-[dependency-groups]
+[project.optional-dependencies]
 dev = [
     "black",
     "ruff",
     "pytest",
 ]
+
+[tool.setuptools.packages.find]
+include = ["spark*"]
+exclude = ["powerbi*", "notebook*", "notebooks*", "tests*", "docs*"]
