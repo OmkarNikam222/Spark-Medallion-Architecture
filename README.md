@@ -33,3 +33,56 @@ Databricks SQL Warehouse
      │
      ▼
 Power BI Dashboard
+
+                    Airflow Scheduler
+                           │
+                           ▼
+                ┌──────────────────────┐
+                │   run_bronze.py      │
+                └──────────────────────┘
+                           │
+                           ▼
+                  Read New Raw Records
+                           │
+                           ▼
+             Add Batch ID & Load Timestamp
+                           │
+                           ▼
+                     Bronze (Delta)
+                           │
+                           ▼
+                 Update Metadata Table
+                           │
+                           ▼
+                ┌──────────────────────┐
+                │   run_silver.py      │
+                └──────────────────────┘
+                           │
+                           ▼
+                  Read New Bronze Batch
+                           │
+                           ▼
+                Cleaning + Features
+                           │
+                           ▼
+                     Silver (Delta)
+                           │
+                           ▼
+                 Update Metadata Table
+                           │
+                           ▼
+                ┌──────────────────────┐
+                │    run_gold.py       │
+                └──────────────────────┘
+                           │
+                           ▼
+                  Read New Silver Batch
+                           │
+                           ▼
+                   Business Aggregations
+                           │
+                           ▼
+                      Gold (Delta)
+                           │
+                           ▼
+                 Update Metadata Table
