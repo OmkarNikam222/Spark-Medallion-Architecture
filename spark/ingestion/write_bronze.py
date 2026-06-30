@@ -1,16 +1,15 @@
-from spark.common.helpers import load_config
-
-
-config = load_config()
-
-BRONZE_PATH = config["paths"]["bronze"]
+from loguru import logger
 
 
 def write_bronze(df):
 
+    logger.info("Writing Bronze Table")
+
     (
         df.write
         .format("delta")
-        .mode(config["write_mode"])
-        .save(BRONZE_PATH)
+        .mode("overwrite")
+        .saveAsTable("spark_demo.default.bronze_bigmart")
     )
+
+    logger.success("Bronze Table Created")
